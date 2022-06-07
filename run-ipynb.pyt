@@ -6,17 +6,17 @@ class Toolbox(object):
     def __init__(self):
         """Define the toolbox (the name of the toolbox is the name of the
         .pyt file)."""
-        self.label = "runipynb"
-        self.alias = "Run ipynb"
+        self.label = "IpynbToolbox"
+        self.alias = "IpynbToolbox"
 
         # List of tool classes associated with this toolbox
-        self.tools = [Ipynb]
+        self.tools = [RunIpynb]
 
 
-class Ipynb(object):
+class RunIpynb(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "Ipynb"
+        self.label = "RunIpynb"
         self.description = "This is Script runs the notebok and saves a html on notebooks folder"
         self.canRunInBackground = True
 
