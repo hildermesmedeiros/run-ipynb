@@ -41,23 +41,24 @@ def debug():
             'script'
         ]
     try:
-        my_documents_path = get_my_doc_path()
-        _params = {
-            'acgispro_scripts': r"C:\Program Files\ArcGIS\Pro\bin\Python\Scripts",
-            'env_name': "arcgispro-py3-clone",
-            'nb_to_format': 'html_toc',
-            'ipynb_file':  os.path.join(my_documents_path, r'ArcGIS\Readme.ipynb'),
-            'output_folder': my_documents_path,
-            'output_basename': f"README2",
-            'no_inputs': False,
-            'embed_images': True,
-            'execute_notebook': True,
-            'allow_errors': True,
-            'timeout_seconds': -1
-        }
-        for p in params[:-1]:
-            p.value = _params[p.name]
-        tool.execute(params, None)
+        for t in test:
+            my_documents_path = get_my_doc_path()
+            _params = {
+                'acgispro_scripts': r"C:\Program Files\ArcGIS\Pro\bin\Python\Scripts",
+                'env_name': "arcgispro-py3-clone",
+                'nb_to_format': t,
+                'ipynb_file':  os.path.join(my_documents_path, r'ArcGIS\Readme.ipynb'),
+                'output_folder': os.path.join(os.path.abspath('.'), 'export_examples'),
+                'output_basename': f"{t}_result_example",
+                'no_inputs': False,
+                'embed_images': True,
+                'execute_notebook': True,
+                'allow_errors': True,
+                'timeout_seconds': -1
+            }
+            for p in params[:-1]:
+                p.value = _params[p.name]
+            tool.execute(params, None)
     except:
         print('error')
 
